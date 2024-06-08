@@ -1,0 +1,62 @@
+﻿@{
+	ViewData["Title"] = "ContactUs";
+}
+
+<form class="lpage" style="color: black;">
+	<h1>Contact Us</h1>
+	<div class="mb-3 text-start">
+		<label for="fname" class="form-label">First Name : </label>
+		<input type="text" class="form-control" id="fname" placeholder="Write your first name">
+	</div>
+	<div class="mb-3 text-start">
+		<label for="lname" class="form-label">Last Name : </label>
+		<input type="text" class="form-control" id="lname" placeholder="Write your first name">
+	</div>
+	<div class="mb-3 text-start">
+		<label for="mno" class="form-label">Mobile Number : </label>
+		<input type="number" class="form-control" id="mno" placeholder="Write your phone number">
+	</div>
+	<div class="mb-3 text-start">
+		<label for="exampleFormControlInput1" class="form-label">Email:</label>
+		<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" required>
+	</div>
+	<div class="mb-3 text-start">
+		<label for="pw" class="form-label">Password:</label>
+		<input type="password" class="form-control" id="pw" required>
+	</div>
+	<div class="mb-3 text-start">
+		<label for="exampleFormControlSelect1" class="form-label">Select your plan</label>
+		<select class="form-control" id="exampleFormControlSelect1" required>
+			<option>Full package</option>
+			<option>marriage-only</option>
+			<option selected>Engagement</option>
+			<option>Pre Wedding-only</option>
+			<option>Birthday</option>
+		</select>
+
+	</div>
+
+	<div class="mb-3 text-start">
+		<label for="reference" class="form-label">Who suggest you</label>
+		<select class="form-control" id="reference" required>
+			<option selected>None</option>
+			<option>Ex-Customer</option>
+			<option>Google</option>
+			<option>Friend</option>
+		</select>
+		</select>
+
+	</div>
+	<div class="mb-3 text-start">
+		<label for="exampleFormControlTextarea2" class="form-label">Elaborate Your Concern</label>
+		<textarea class="form-control" id="exampleFormControlTextarea2" rows="3"></textarea>
+	</div>
+	<div class="form-check mb-3 text-start">
+		<input type="checkbox" class="form-check-input" id="rememberMe">
+		<label class="form-check-label" for="rememberMe">Remember Me</label>
+	</div>
+	<div>
+		<button type="submit" class="btn btn-15">Submit</button>
+	</div>
+</form>
+

@@ -1,0 +1,6 @@
+@AJStudio.Api_HostAddress = http://localhost:5003
+
+GET {{AJStudio.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

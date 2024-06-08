@@ -1,0 +1,28 @@
+﻿@{
+	ViewData["Title"] = "Login";
+}
+
+<form class="lpage1">
+	<h1>Login Form</h1>
+	<div class="mb-3 text-start">
+		<label for="Email" class="form-label">Email:</label>
+		<input type="email" class="form-control" id="Email" required>
+	</div>
+	<div class="mb-3 text-start">
+		<label for="pw" class="form-label">Password:</label>
+		<input type="password" class="form-control" id="pw" required>
+	</div>
+	<div class="form-check mb-3 text-start forgot-password">
+		<div>
+			<input type="checkbox" class="form-check-input" id="rememberMe">
+			<label class="form-check-label" for="rememberMe">Remember Me</label>
+		</div>
+		<div>
+			<a asp-controller="ForgotPassword" asp-action="ForgotPasswordPage">Forgot Password</a>
+		</div>
+	</div>
+	<div>
+		<button type="submit" class="btn btn-15">Login</button>
+	</div>
+</form>
+
