@@ -1,4 +1,5 @@
 ﻿using AJStudio.Business.ContactUs;
+using AJStudio.Core.Enum;
 using AJStudio.Core.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -93,10 +94,10 @@ namespace AJStudio.Api.Controllers
         /// <param name="contactId"></param>
         /// <param name="email"></param>
         /// <returns></returns>
-        [HttpGet("newCustomerRegistrationEmail")]
-        public async Task<IActionResult> NewCustomerRegistrationMail([FromQuery] long contactId, [FromQuery] string email)
+        [HttpPost("newCustomerRegistrationEmail")]
+        public async Task<IActionResult> NewCustomerRegistrationMail([FromBody] CustomerAddResponceModel customerAddResponceModel)
         {
-            return Ok(await _contactUsManager.NewCustomerRegistrationMail(contactId, email));
+            return Ok(await _contactUsManager.NewCustomerRegistrationMail(customerAddResponceModel.contactId));
         }
     }
 }

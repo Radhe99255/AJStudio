@@ -1,4 +1,5 @@
 ﻿using AJStudio.Business.EmailServices;
+using AJStudio.Core.Enum;
 using AJStudio.Core.Models;
 using AJStudio.Data.DBTables;
 using AJStudio.Data.Repository.ContactUs;
@@ -49,13 +50,16 @@ namespace AJStudio.Business.ContactUs
         /// </summary>
         /// <param name="contactUsModel"></param>
         /// <returns></returns>
-        public async Task<string> Manager_AddContact(ContactUsModel contactUsModel)
+        public async Task<CustomerAddResponceModel> Manager_AddContact(ContactUsModel contactUsModel)
         {
+            CustomerAddResponceModel customerAddResponceModel = new CustomerAddResponceModel();
+
             var checkEmail = await _contactUsRepository.Repo_CheckEmail(contactUsModel.Email);
 
             if (checkEmail)
             {
-                return "Exist";
+                customerAddResponceModel.responce = "Exist";
+                return customerAddResponceModel;
             }
 
             return await _contactUsRepository.Repo_AddContact(contactUsModel);
@@ -114,13 +118,13 @@ namespace AJStudio.Business.ContactUs
         /// <param name="contactId"></param>
         /// <param name="newUserEmail"></param>
         /// <returns></returns>
-        public async Task<string> NewCustomerRegistrationMail(long contactId, string newUserEmail)
+        public async Task<string> NewCustomerRegistrationMail(long contactId)
         {
             var newUserContact = await _contactUsRepository.Repo_GetContactById(contactId);
 
             var msgBody = CustomerMessageBody(newUserContact);
 
-            var receiverEmail = newUserEmail;
+            var receiverEmail = newUserContact.Email;
             var subject = "Thank You for Connecting AJstudio!";
             var message = msgBody;
 
@@ -128,14 +132,14 @@ namespace AJStudio.Business.ContactUs
 
             var aakash_Smit_MsgBody = Aaskah_Smit_EmailMassageBody(newUserContact);
 
-            var receiverEmail_Aakash = "akashhapani838@gmail.com";
+            var receiverEmail_Aakash = "aakashhapani838@gmail.com";
             var receiverEmail_Smit = "smitvaddoriya123@gmail.com";
             var ownerSubject = $"New Inquiry from {newUserContact.First_Name} {newUserContact.Last_Name}";
             var ownerMsgBody = aakash_Smit_MsgBody;
 
             await _emailSender.SendEmailAsync("patelpassport1234@gmail.com", ownerSubject, ownerMsgBody);
-            await _emailSender.SendEmailAsync(receiverEmail_Aakash, ownerSubject, ownerMsgBody);
-            await _emailSender.SendEmailAsync(receiverEmail_Smit, ownerSubject, ownerMsgBody);
+            //await _emailSender.SendEmailAsync(receiverEmail_Aakash, ownerSubject, ownerMsgBody);
+            //await _emailSender.SendEmailAsync(receiverEmail_Smit, ownerSubject, ownerMsgBody);
 
             return $"Success";
         }

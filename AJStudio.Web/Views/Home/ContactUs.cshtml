@@ -1,62 +1,128 @@
-﻿@{
+﻿@model AJStudio.Core.Models.ContactUsModel
+
+@{
 	ViewData["Title"] = "ContactUs";
 }
 
-<form class="lpage" style="color: black;">
+<div class="lpage" style="color: black;">
+	<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
 	<h1>Contact Us</h1>
-	<div class="mb-3 text-start">
-		<label for="fname" class="form-label">First Name : </label>
-		<input type="text" class="form-control" id="fname" placeholder="Write your first name">
-	</div>
-	<div class="mb-3 text-start">
-		<label for="lname" class="form-label">Last Name : </label>
-		<input type="text" class="form-control" id="lname" placeholder="Write your first name">
-	</div>
-	<div class="mb-3 text-start">
-		<label for="mno" class="form-label">Mobile Number : </label>
-		<input type="number" class="form-control" id="mno" placeholder="Write your phone number">
-	</div>
-	<div class="mb-3 text-start">
-		<label for="exampleFormControlInput1" class="form-label">Email:</label>
-		<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" required>
-	</div>
-	<div class="mb-3 text-start">
-		<label for="pw" class="form-label">Password:</label>
-		<input type="password" class="form-control" id="pw" required>
-	</div>
-	<div class="mb-3 text-start">
-		<label for="exampleFormControlSelect1" class="form-label">Select your plan</label>
-		<select class="form-control" id="exampleFormControlSelect1" required>
-			<option>Full package</option>
-			<option>marriage-only</option>
-			<option selected>Engagement</option>
-			<option>Pre Wedding-only</option>
-			<option>Birthday</option>
-		</select>
 
+	<div class="mb-3 text-start">
+		<label asp-for="First_Name" class="form-label">First Name: </label>
+		<input asp-for="First_Name" class="form-control" id="firstName" placeholder="Enter First Name">
+		<span asp-validation-for="First_Name" class="text-danger" id="firstNameError" style="color:red;"></span>
 	</div>
 
 	<div class="mb-3 text-start">
-		<label for="reference" class="form-label">Who suggest you</label>
-		<select class="form-control" id="reference" required>
-			<option selected>None</option>
-			<option>Ex-Customer</option>
-			<option>Google</option>
-			<option>Friend</option>
-		</select>
-		</select>
+		<label asp-for="Last_Name" class="form-label">Last Name: </label>
+		<input asp-for="Last_Name" class="form-control" id="lastName" placeholder="Enter Last Name">
+		<span asp-validation-for="Last_Name" class="text-danger" id="lastNameError" style="color:red;"></span>
+	</div>
 
-	</div>
 	<div class="mb-3 text-start">
-		<label for="exampleFormControlTextarea2" class="form-label">Elaborate Your Concern</label>
-		<textarea class="form-control" id="exampleFormControlTextarea2" rows="3"></textarea>
+		<label asp-for="Mobile_Number" class="form-label">Mobile Number : </label>
+		<input asp-for="Mobile_Number" class="form-control" id="mobileNumber" placeholder="Enter Phone Number" pattern="\d*" oninput="this.value=this.value.replace(/[^0-9]/g,'');">
+		<span asp-validation-for="Mobile_Number" class="text-danger" id="mobileNumberError" style="color:red;"></span>
 	</div>
-	<div class="form-check mb-3 text-start">
-		<input type="checkbox" class="form-check-input" id="rememberMe">
-		<label class="form-check-label" for="rememberMe">Remember Me</label>
+
+	<div class="mb-3 text-start">
+		<label asp-for="Email" class="form-label">Email:</label>
+		<input asp-for="Email" class="form-control" id="email" placeholder="name@example.com">
+		<span asp-validation-for="Email" class="text-danger" id="emailError" style="color:red;"></span>
 	</div>
+
+	<div class="mb-3 text-start">
+		<label asp-for="State" class="form-label">State:</label>
+		<select asp-for="State" class="form-control" id="state" name="state">
+			<option value="">Select State</option>
+			<option value="Andhra Pradesh">Andhra Pradesh</option>
+			<option value="Arunachal Pradesh">Arunachal Pradesh</option>
+			<option value="Assam">Assam</option>
+			<option value="Bihar">Bihar</option>
+			<option value="Chhattisgarh">Chhattisgarh</option>
+			<option value="Goa">Goa</option>
+			<option value="Gujarat">Gujarat</option>
+			<option value="Haryana">Haryana</option>
+			<option value="Himachal Pradesh">Himachal Pradesh</option>
+			<option value="Jharkhand">Jharkhand</option>
+			<option value="Karnataka">Karnataka</option>
+			<option value="Kerala">Kerala</option>
+			<option value="Madhya Pradesh">Madhya Pradesh</option>
+			<option value="Maharashtra">Maharashtra</option>
+			<option value="Manipur">Manipur</option>
+			<option value="Meghalaya">Meghalaya</option>
+			<option value="Mizoram">Mizoram</option>
+			<option value="Nagaland">Nagaland</option>
+			<option value="Odisha">Odisha</option>
+			<option value="Punjab">Punjab</option>
+			<option value="Rajasthan">Rajasthan</option>
+			<option value="Sikkim">Sikkim</option>
+			<option value="Tamil Nadu">Tamil Nadu</option>
+			<option value="Telangana">Telangana</option>
+			<option value="Tripura">Tripura</option>
+			<option value="Uttar Pradesh">Uttar Pradesh</option>
+			<option value="Uttarakhand">Uttarakhand</option>
+			<option value="West Bengal">West Bengal</option>
+		</select>
+		<span asp-validation-for="State" class="text-danger" id="StateError" style="color:red;"></span>
+	</div>
+
+	<div class="mb-3 text-start">
+		<label asp-for="City" class="form-label">City:</label>
+		<select asp-for="City" class="form-control" id="city" name="city">
+			<option value=""> Select City</option>
+		</select>
+		<span asp-validation-for="City" class="text-danger" id="cityError" style="color:red;"></span>
+	</div>
+	
+	<div class="mb-3 text-start">
+		<label asp-for="Customer_Selected_Plane" class="form-label">Select Your Plane:</label>
+		<select asp-for="Customer_Selected_Plane" class="form-control" id="customerSelectedPlane">
+			<option value="">Select Your Plane</option>
+			<option value="full-package">Full package</option>
+			<option value="marriage">marriage</option>
+			<option value="engagement">Engagement</option>
+			<option value="prewedding">Pre Wedding</option>
+			<option value="birthday">Birthday</option>
+			<option value="other">Others</option>
+		</select>
+		<span asp-validation-for="Customer_Selected_Plane" class="text-danger" id="planeError" style="color:red;"></span>
+	</div>
+
+	<div class="mb-3 text-start">
+		<label asp-for="Suggested" class="form-label">Who suggest you:</label>
+		<select asp-for=Suggested class="form-control" id="suggested" required>
+			<option value="none">None</option>
+			<option value="ex-customer">Ex-Customer</option>
+			<option value="google">Google</option>
+			<option value="friend">Friend</option>
+			<option value="other">Others</option>
+		</select>
+		<span asp-validation-for="Suggested" class="text-danger" id="suggestedError" style="color:red;"></span>
+	</div>
+
+	<div class="mb-3 text-start">
+		<label asp-for="Address" class="form-label">Address:</label>
+		<textarea asp-for="Address" class="form-control" id="address" rows="3" style="resize:none;" placeholder="Enter your Address"></textarea>
+		<span asp-validation-for="Address" class="text-danger" id="addressError" style="color:red;"></span>
+	</div>
+
+	<div class="mb-3 text-start">
+		<label asp-for="Customer_Comment" class="form-label">Elaborate Your Concern:</label>
+		<textarea asp-for="Customer_Comment" class="form-control" id="comments" rows="3" style="resize:none;" placeholder="Enter your Comments"></textarea>
+	</div>
+
 	<div>
-		<button type="submit" class="btn btn-15">Submit</button>
+		<button type="button" onclick="submitCustomerData()" class="btn btn-15">Submit</button>
 	</div>
-</form>
+</div>
 
+@section Scripts {
+	<script src="~/js/ContactUs/state_city.js"></script>
+	<script type="text/javascript" src="~/js/ContactUs/ContactUsSubmit.js"></script>
+	@{
+		await Html.RenderPartialAsync("_ValidationScriptsPartial");
+	}
+}
