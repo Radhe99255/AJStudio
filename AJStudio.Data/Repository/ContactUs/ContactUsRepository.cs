@@ -1,4 +1,5 @@
-﻿using AJStudio.Core.Models;
+﻿using AJStudio.Core.Enum;
+using AJStudio.Core.Models;
 using AJStudio.Data.Context;
 using AJStudio.Data.DBTables;
 using AutoMapper;
@@ -54,7 +55,7 @@ namespace AJStudio.Data.Repository.ContactUs
         /// </summary>
         /// <param name="contactUsDBTable"></param>
         /// <returns></returns>
-        public async Task<string> Repo_AddContact(ContactUsModel contactUsModel)
+        public async Task<CustomerAddResponceModel> Repo_AddContact(ContactUsModel contactUsModel)
         {
             ContactUsDBTable contactUsDBTable = new ContactUsDBTable()
             {
@@ -73,7 +74,9 @@ namespace AJStudio.Data.Repository.ContactUs
             await _aJStudioContext.ContactUsTable.AddAsync(contactUsDBTable);
             await _aJStudioContext.SaveChangesAsync();
 
-            return contactUsDBTable.Customer_Id.ToString();
+            CustomerAddResponceModel customerAddResponceModel = new CustomerAddResponceModel();
+            customerAddResponceModel.contactId = contactUsDBTable.Customer_Id;
+            return customerAddResponceModel;
         }
 
         /// <summary>
